@@ -1,0 +1,10 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>UbiqueInnovation/renovate-config-android:base.json5"
+  ],
+  "reviewers": [
+    "benz-ubique",
+    "M-Wong"
+  ]
+}
