@@ -57,11 +57,13 @@ fun MensaScreen(
 	val mensen = mensenState.value
 	AnimatedContent(targetState = mensen, label = "viewState") { state ->
 		when (state) {
-			is ViewState.Loading -> Box(Modifier.fillMaxSize()) {
-				CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+			is ViewState.Loading -> {
+				//TODO 3 Übung 3 Erstelle eine Ladeanimation
 			}
 			is ViewState.Success -> MensaList(state.data, favoriteMensaIds, onToggleMensaFavorite)
-			is ViewState.Error -> LoadingError(state.exception, onRetryLoadingClicked)
+			is ViewState.Error -> {
+				//TODO 3 Übung 3 Erstelle eine Fehlermeldung, Verwende dazu das LoadingError Composable
+			}
 		}
 	}
 }
@@ -108,24 +110,7 @@ private fun LoadingError(
 	exception: Exception,
 	onRetryClicked: () -> Unit,
 ) {
-	Column(
-		modifier = Modifier
-			.fillMaxSize()
-			.padding(horizontal = 20.dp),
-		horizontalAlignment = Alignment.CenterHorizontally,
-		verticalArrangement = Arrangement.Center
-	) {
-		Icon(Icons.Default.Warning, contentDescription = null, tint = Color.Red, modifier = Modifier.size(48.dp))
-		Spacer(Modifier.height(10.dp))
-		Text("Fehler beim laden", style = MaterialTheme.typography.headlineMedium)
-		Spacer(Modifier.height(10.dp))
-		Text("Etwas ist schiefgelaufen. Bitte probiere es erneut.", style = MaterialTheme.typography.bodyMedium)
-		Text("Fehler: ${exception.javaClass.simpleName}", style = MaterialTheme.typography.bodyMedium)
-		Spacer(Modifier.height(10.dp))
-		Button(onClick = onRetryClicked) {
-			Text("Erneut probieren")
-		}
-	}
+	//TODO 3 Übung 3 Erstelle eine Fehlermeldung, welche die onRetryClicked Funktion aufruft
 }
 
 @OptIn(ExperimentalFoundationApi::class)
