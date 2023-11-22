@@ -17,21 +17,15 @@ class MensaRepository(
 	}
 
 	suspend fun getFavoriteMensaIds() = withContext(Dispatchers.IO) {
-		preferences.getStringSet(KEY_FAVORITE_MENSA_IDS, emptySet())?.mapNotNull { it.toIntOrNull() } ?: emptyList()
+		//TODO 6 Übung 6: Implementiere die Funktion toggleFavoriteMensaId
+		//Lese die Liste der favorisierten Mensen aus den SharedPreferences aus
+		emptyList<Int>()
 	}
 
 	suspend fun toggleFavoriteMensaId(mensaId: Int) = withContext(Dispatchers.IO) {
-		val currentFavoriteMensaIds = getFavoriteMensaIds()
-		val updatedFavoriteMensaIds = if (currentFavoriteMensaIds.contains(mensaId)) {
-			currentFavoriteMensaIds.minus(mensaId)
-		} else {
-			currentFavoriteMensaIds.plus(mensaId)
-		}
-		preferences.edit {
-			putStringSet(KEY_FAVORITE_MENSA_IDS, updatedFavoriteMensaIds.map { it.toString() }.toSet())
-		}
-
-		return@withContext updatedFavoriteMensaIds
+		//TODO 6 Übung 6: Implementiere die Funktion toggleFavoriteMensaId
+		//Update die Liste der favorisierten Mensen in den SharedPreferences
+		return@withContext getFavoriteMensaIds()
 	}
 
 	suspend fun getMensaList() = withContext(Dispatchers.IO) {

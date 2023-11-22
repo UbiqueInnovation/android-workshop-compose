@@ -160,15 +160,7 @@ private fun LazyItemScope.MensaItem(
 				Text(mensa.address, style = MaterialTheme.typography.bodyMedium)
 			}
 			Spacer(Modifier.width(10.dp))
-			IconButton(onClick = onToggleFavoriteClicked) {
-				AnimatedContent(targetState = isFavorite, label = "favoriteIcon") {
-					if (it) {
-						Icon(Icons.Default.Favorite, contentDescription = null, tint = Color.Red)
-					} else {
-						Icon(Icons.Default.FavoriteBorder, contentDescription = null, tint = Color.Black)
-					}
-				}
-			}
+			//TODO 6 Übung 6 Fügen ein Icon hinzu, welches anzeigt, ob die Mensa als Favorit markiert ist oder nicht.
 		}
 
 		AnimatedVisibility(visible = isExpanded) {
