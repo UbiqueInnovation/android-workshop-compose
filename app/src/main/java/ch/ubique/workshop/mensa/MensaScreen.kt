@@ -118,6 +118,8 @@ private fun MensaItem(
 	) {
 
 
+		//TODO 4 Übung 4 Zeige das MensaMenuItem an, wenn die Mensa expanded ist. Benutze dazu AnimatedVisibility
+        
 		//TODO 5 Übung 5 Zeige das Mensa Bild an
 		//https://coil-kt.github.io/coil/compose/
 
@@ -135,14 +137,5 @@ private fun MensaItem(
 private fun MensaMenuItem(
 	menu: MensaMenu,
 ) {
-	Column(Modifier.padding(vertical = 5.dp)) {
-		Row(verticalAlignment = Alignment.CenterVertically) {
-			Text(menu.menuTitle, style = MaterialTheme.typography.titleMedium)
-			Spacer(Modifier.weight(1f))
-			if (menu.priceExtern > 0f) {
-				Text("CHF ${menu.priceExternText}", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
-			}
-		}
-		Text(menu.menuText, style = MaterialTheme.typography.bodySmall)
-	}
+	//TODO 4 Übung 4 Zeige das Menu an
 }
