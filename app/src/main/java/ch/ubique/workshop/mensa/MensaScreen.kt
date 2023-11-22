@@ -147,12 +147,8 @@ private fun LazyItemScope.MensaItem(
 		Row(
 			modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)
 		) {
-			AsyncImage(
-				model = mensa.imageUrl,
-				modifier = Modifier.size(100.dp),
-				contentDescription = null,
-				contentScale = ContentScale.Crop,
-			)
+			//TODO 5 Übung 5 Zeige das Mensa Bild an
+			//https://coil-kt.github.io/coil/compose/
 			Spacer(Modifier.width(10.dp))
 			Column(Modifier.weight(1f)) {
 				Text(mensa.name, style = MaterialTheme.typography.titleLarge)
