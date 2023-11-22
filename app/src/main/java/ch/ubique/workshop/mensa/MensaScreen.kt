@@ -145,7 +145,7 @@ private fun LazyItemScope.MensaItem(
 			//TODO 6 Übung 6 Fügen ein Icon hinzu, welches anzeigt, ob die Mensa als Favorit markiert ist oder nicht.
 		}
 
-		//TDOO 4 Übung 4 Zeige das Menu an, wenn die Mensa expanded ist. Benutze dazu AnimatedVisibility
+		//TODO 4 Übung 4 Zeige das MensaMenuItem an, wenn die Mensa expanded ist. Benutze dazu AnimatedVisibility
 
 		Divider(color = Color.LightGray)
 	}
@@ -155,14 +155,5 @@ private fun LazyItemScope.MensaItem(
 private fun MensaMenuItem(
 	menu: MensaMenu,
 ) {
-	Column(Modifier.padding(vertical = 5.dp)) {
-		Row(verticalAlignment = Alignment.CenterVertically) {
-			Text(menu.menuTitle, style = MaterialTheme.typography.titleMedium)
-			Spacer(Modifier.weight(1f))
-			if (menu.priceExtern > 0f) {
-				Text("CHF ${menu.priceExternText}", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
-			}
-		}
-		Text(menu.menuText, style = MaterialTheme.typography.bodySmall)
-	}
+	//TODO 4 Übung 4 Zeige das Menu an
 }
