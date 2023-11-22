@@ -72,7 +72,7 @@ private fun MensaList(
 	favoriteMensaIds: State<List<Int>>,
 	onToggleMensaFavorite: (mensaId: Int) -> Unit,
 ) {
-	var expandedMensaId: Int? by remember { mutableStateOf(null) }
+	//TODO 4 Übung 4 Erstelle eine Variable (expandedMensaId), welche die expanded Mensa Id speichert
 
 	// This kind of computation should normally be done in the ViewModel, but for the sake of simplicity it is done here
 	val sortedMensen = mensen.sortedByDescending { favoriteMensaIds.value.contains(it.mensaId) }
@@ -85,13 +85,14 @@ private fun MensaList(
 		sortedMensen.forEach { mensa ->
 			item(key = mensa.mensaId) {
 				val isFavorite = favoriteMensaIds.value.contains(mensa.mensaId)
-				val isExpanded = expandedMensaId == mensa.mensaId
+				//TODO 4 Übung 4 Prüfe, ob die Mensa expanded ist oder nicht
+				val isExpanded = false
 				MensaItem(
 					mensa = mensa,
 					isFavorite = isFavorite,
 					isExpanded = isExpanded,
 					onMensaClicked = {
-						expandedMensaId = mensa.mensaId.takeIf { !isExpanded }
+						//TODO 4 Übung 4 Setze die expandedMensaId auf die mensaId, wenn die Mensa nicht expanded ist
 					},
 					onToggleFavoriteClicked = {
 						onToggleMensaFavorite.invoke(mensa.mensaId)
@@ -137,11 +138,11 @@ private fun LazyItemScope.MensaItem(
 	onToggleFavoriteClicked: () -> Unit,
 ) {
 	Column(
+		//TODO 4 Übung 4 fügen den clickable modifier hinzu, welcher die onMensaClicked Funktion aufruft
 		modifier = Modifier
 			.background(Color.White)
 			.fillMaxWidth()
 			.animateItemPlacement()
-			.clickable(onClick = onMensaClicked)
 	) {
 
 		Row(
@@ -159,23 +160,7 @@ private fun LazyItemScope.MensaItem(
 			//TODO 6 Übung 6 Fügen ein Icon hinzu, welches anzeigt, ob die Mensa als Favorit markiert ist oder nicht.
 		}
 
-		AnimatedVisibility(visible = isExpanded) {
-			Column(
-				modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)
-			) {
-				if (mensa.menus.isNotEmpty()) {
-					mensa.menus.forEachIndexed { idx, menu ->
-						MensaMenuItem(menu)
-
-						if (idx != mensa.menus.lastIndex) {
-							Divider(color = Color.LightGray)
-						}
-					}
-				} else {
-					Text("Diese Mensa hat heute kein Menu")
-				}
-			}
-		}
+		//TDOO 4 Übung 4 Zeige das Menu an, wenn die Mensa expanded ist. Benutze dazu AnimatedVisibility
 
 		Divider(color = Color.LightGray)
 	}
