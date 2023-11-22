@@ -78,7 +78,7 @@ private fun MensaList(
 
 	// This kind of computation should normally be done in the ViewModel, but for the sake of simplicity it is done here
 	val sortedMensen = mensen.sortedByDescending { favoriteMensaIds.value.contains(it.mensaId) }
-	//TDOO 2 Übung 2 Erstelle eine LazyColumn, welche scrollbar ist
+	//TODO 2 Übung 2 Erstelle eine LazyColumn, welche scrollbar ist
 	Column(
 		modifier = Modifier.fillMaxSize()
 	) {
