@@ -1,9 +1,9 @@
-package ch.ubique.templateandroid
+package ch.ubique.workshop
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import ch.ubique.templateandroid.home.HomescreenFragment
+import ch.ubique.workshop.mensa.MensaFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 		setContentView(R.layout.activity_main)
 
 		supportFragmentManager.commit {
-			add(R.id.fragment_container, HomescreenFragment.newInstance())
+			add(R.id.fragment_container, MensaFragment.newInstance())
 		}
 	}
 

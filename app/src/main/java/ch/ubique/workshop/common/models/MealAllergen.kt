@@ -1,0 +1,33 @@
+package ch.ubique.workshop.common.models
+
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = false)
+enum class MealAllergen {
+	CASHEW,
+	EI,
+	ERDNUSS,
+	FISCH,
+	FREI_VON_DEKLARAT_PFLICHTIGEN_ALLERGENEN,
+	GLUTEN,
+	KREBSTIERE,
+	LUPINEN,
+	MANDEL,
+	MILCH_LAKTOSE,
+	WEICHTIERE,
+	SENF,
+	SCHALENFRUECHTE,
+	SCHWFELDIOXID_SULFITE,
+	SELLERIE,
+	SESAM,
+	SOJA,
+	SOJA_GENTEC_FREI,
+	SULPHUR_DIOXIDE,
+	WALNUSS,
+	WEIZEN,
+	ROGGEN,
+	GERSTE,
+	HAFER,
+	DINKEL,
+	UNKNOWN,
+}

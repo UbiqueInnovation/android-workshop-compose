@@ -2,32 +2,30 @@ Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
 	id("com.android.application")
 	id("kotlin-android")
+	id("com.google.devtools.ksp")
 	id("ch.ubique.gradle.ubdiag")
-	id("ch.ubique.gradle.deusex")
-	id("ch.ubique.i18n")
 }
 
 android {
-	namespace = "ch.ubique.templateandroid"
+	namespace = "ch.ubique.workshop"
 	compileSdk = 34
 
 	defaultConfig {
 		minSdk = 26
 		targetSdk = 34
 
-		applicationId = "ch.ubique.templateandroid"
+		applicationId = "ch.ubique.workshop"
 		versionName = "1.0.0"
 		versionCode = 1_00_00_00
 
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+		buildConfigField("String", "WEBSERVICE_BASE_URL", "\"https://workshop-mensa.s3.eu-west-1.amazonaws.com\"")
 	}
 
+	setFlavorDimensions(listOf("environment"))
 	productFlavors {
-		getByName("dev") {
-
-		}
-		getByName("prod") {
-
+		create("dev") {
+			dimension = "environment"
 		}
 	}
 
@@ -38,7 +36,17 @@ android {
 		}
 	}
 
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+	}
+
+	kotlinOptions {
+		jvmTarget = "11"
+	}
+
 	buildFeatures {
+		buildConfig = true
 		viewBinding = true
 		compose = true
 	}
@@ -46,13 +54,6 @@ android {
 	composeOptions {
 		kotlinCompilerExtensionVersion = "1.5.4"
 	}
-}
-
-poeditor {
-	val poEditorApiKey = System.getenv("UBIQUE_POEDITOR_API_KEY") ?: extra["ubiquePoEditorAPIKey"] as? String ?: ""
-	apiKey = poEditorApiKey
-	projectId = "123456"
-	defaultLang = "de"
 }
 
 dependencies {
@@ -73,13 +74,15 @@ dependencies {
 	implementation("androidx.compose.foundation:foundation")
 	implementation("androidx.compose.material3:material3:1.1.2")
 	implementation("androidx.activity:activity-compose:1.8.1")
+	implementation("io.coil-kt:coil-compose:2.5.0")
 
-	// Ubique
-	implementation("ch.ubique.android:utils-kt:1.21")
-	implementation("ch.ubique.android:compose-utils:1.1.0")
-	implementation("ch.ubique.android:network:2.2.2")
-	devImplementation("ch.ubique.android:devtools:1.1.0")
-	prodImplementation("ch.ubique.android:devtools-noop:1.1.0")
+	// Networking
+	implementation("com.squareup.retrofit2:retrofit:2.9.0")
+	implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+	implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
+	implementation("com.squareup.moshi:moshi-adapters:1.15.0")
+	ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+
 
 	// Test
 	testImplementation("androidx.test.ext:junit-ktx:1.1.5")
