@@ -78,32 +78,29 @@ private fun MensaList(
 
 	// This kind of computation should normally be done in the ViewModel, but for the sake of simplicity it is done here
 	val sortedMensen = mensen.sortedByDescending { favoriteMensaIds.value.contains(it.mensaId) }
-
-	val lazyListState = rememberLazyListState()
-	LazyColumn(
-		state = lazyListState,
+	//TDOO 2 Übung 2 Erstelle eine LazyColumn, welche scrollbar ist
+	Column(
 		modifier = Modifier.fillMaxSize()
 	) {
 		sortedMensen.forEach { mensa ->
-			item(key = mensa.mensaId) {
-				val isFavorite = favoriteMensaIds.value.contains(mensa.mensaId)
-				//TODO 4 Übung 4 Prüfe, ob die Mensa expanded ist oder nicht
-				val isExpanded = false
-				MensaItem(
-					mensa = mensa,
-					isFavorite = isFavorite,
-					isExpanded = isExpanded,
-					onMensaClicked = {
-						//TODO 4 Übung 4 Setze die expandedMensaId auf die mensaId, wenn die Mensa nicht expanded ist
-					},
-					onToggleFavoriteClicked = {
-						onToggleMensaFavorite.invoke(mensa.mensaId)
-					},
-				)
-			}
+			val isFavorite = favoriteMensaIds.value.contains(mensa.mensaId)
+			//TODO 4 Übung 4 Prüfe, ob die Mensa expanded ist oder nicht
+			val isExpanded = false
+			MensaItem(
+				mensa = mensa,
+				isFavorite = isFavorite,
+				isExpanded = isExpanded,
+				onMensaClicked = {
+					//TODO 4 Übung 4 Setze die expandedMensaId auf die mensaId, wenn die Mensa nicht expanded ist
+				},
+				onToggleFavoriteClicked = {
+					onToggleMensaFavorite.invoke(mensa.mensaId)
+				},
+			)
 		}
 	}
 }
+
 
 @Composable
 private fun LoadingError(
@@ -113,9 +110,9 @@ private fun LoadingError(
 	//TODO 3 Übung 3 Erstelle eine Fehlermeldung, welche die onRetryClicked Funktion aufruft
 }
 
-@OptIn(ExperimentalFoundationApi::class)
+//TDOO 2 Übung 2 Erstelle eine LazyColumn, welche scrollbar ist
 @Composable
-private fun LazyItemScope.MensaItem(
+private fun MensaItem(
 	mensa: Mensa,
 	isFavorite: Boolean,
 	isExpanded: Boolean,
@@ -127,7 +124,6 @@ private fun LazyItemScope.MensaItem(
 		modifier = Modifier
 			.background(Color.White)
 			.fillMaxWidth()
-			.animateItemPlacement()
 	) {
 
 		Row(
