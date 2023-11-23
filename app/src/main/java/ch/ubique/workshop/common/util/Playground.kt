@@ -51,7 +51,7 @@ fun ProgressIndicator() {
 
 @Composable
 fun MyComonent() {
-	var counter = remember { mutableStateOf(0) }
+	val counter = remember { mutableStateOf(0) }
 	Button(onClick = { counter.value++ }) {
 		MyText(text = "I've been clicked ${counter.value} times")
 	}
